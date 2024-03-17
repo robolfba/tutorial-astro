@@ -7,9 +7,15 @@ const {title, author, pubDate, description, image, tags} = frontmatter;
 <BaseLayout pageTitle={title}>
     <p>Escrito por {author} el {pubDate.slice(0,10)}</p>
     <p><em>Descripción: {description}</em></p>
-    <ul>
+    <!-- <ul>
         {tags.map((tag: unknown) => <li>{tag}</li>)}
-    </ul>
+    </ul> -->
+    <div class="tags">
+        {tags.map((tag) => (
+          <p class="tag"><a href={`/tags/${tag}`}>{tag}</a></p>
+        ))}
+    </div>
+
     <img alt={image.alt} width="300" src={image.url}/>
     <slot />
     
@@ -29,6 +35,25 @@ const {title, author, pubDate, description, image, tags} = frontmatter;
         }
         li:last-child {
             margin-right: 0;
+        }
+
+        a {
+        color: #00539F;
+        }
+  
+        .tags {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 1em 0;
+        }
+    
+        .tag {
+        margin: 0.25em;
+        border: dotted 1px #a1a1a1;
+        border-radius: .5em;
+        padding: .5em 1em;
+        font-size: 1.15em;
+        background-color: #F8FCFD;
         }
     </style>
 </BaseLayout>
