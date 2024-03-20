@@ -5,11 +5,8 @@ const { frontmatter } = Astro.props;
 const {title, author, pubDate, description, image, tags} = frontmatter;
 ---
 <BaseLayout pageTitle={title}>
-    <p>Escrito por {author} el {pubDate.slice(0,10)}</p>
+    <p>Escrito por {author} el {pubDate.toString().slice(0,10)}</p>
     <p><em>Descripción: {description}</em></p>
-    <!-- <ul>
-        {tags.map((tag: unknown) => <li>{tag}</li>)}
-    </ul> -->
     <div class="tags">
         {tags.map((tag) => (
           <p class="tag"><a href={`/tags/${tag}`}>{tag}</a></p>
